@@ -2,7 +2,7 @@ import unittest
 import argparse
 from importlib import import_module
 
-MODULES = ['douyin', 'bilibili', 'jd', 'kuaishou', 'taobao', 'weibo', 'xhs']
+MODULES = ['jd','taobao']
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Test program.')

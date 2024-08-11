@@ -1,10 +1,13 @@
+import io
 import re
+import sys
 from .common import SEARCH_URL, COMMON_HEADERS
 from lib import requests
 from lib.logger import logger
 from urllib.parse import quote
 from bs4 import BeautifulSoup
 from asyncio import gather
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf8')
 
 async def request_search(keyword: str, cookie: str, offset: int = 0, limit: int = 30) -> dict:
     """
@@ -47,6 +50,7 @@ def parse_search_html(html) -> tuple[list, int]:
     soup = BeautifulSoup(html, "html.parser")
     datalist = []
     src = soup.head.find_all("script")[-1].text.replace("\n", '').replace("\t", '').replace('\\\'','\'')
+    print(src)
     total = int(re.search(r"result_count:'(\d+)'", src).group(1))
     for item in soup.find_all("li", class_="gl-item"):
         imgSrc = "https:" + item.find("div", class_="p-img").find("img")['data-lazy-img']

@@ -9,6 +9,7 @@ async def request_detail(id: str, cookie: str) -> dict:
     请求taobao获取商品详情
     """
     str_data = f'{{"id":"{id}","detail_v":"3.3.2","exParams":"{{\\"id\\":\\"{id}\\",\\"item_type\\":\\"ad\\",\\"ali_refid\\":\\"a3_431358_1007:15572659:H:15572659_0_11770813889:c0a3730368049201836ac06218cb19dd\\",\\"ali_trackid\\":\\"296_c0a3730368049201836ac06218cb19dd\\",\\"spm\\":\\"a21bo.jianhua/a.201876.d5\\",\\"scm\\":\\"1007.40986.397407.0\\",\\"queryParams\\":\\"ali_refid=a3_431358_1007%3A15572659%3AH%3A15572659_0_11770813889%3Ac0a3730368049201836ac06218cb19dd&ali_trackid=296_c0a3730368049201836ac06218cb19dd&id={id}&item_type=ad&scm=1007.40986.397407.0&spm=a21bo.jianhua%2Fa.201876.d5\\",\\"domain\\":\\"https://item.taobao.com\\",\\"path_name\\":\\"/item.htm\\"}}"}}'
+    
     quote_data = quote(str_data, 'utf-8')
     token = get_token(cookie)
     timestamp = str(time.time()).replace('.', '')[0:13]
